@@ -29,6 +29,7 @@
   "order": [
     "cart-items",
     "cart-footer",
+    "text-cart",
     "featured-products"
   ]
 }
