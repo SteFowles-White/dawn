@@ -1,13 +1,18 @@
 <div id="section-cta">
     <div class="container">
         <h3>{{ section.settings.text-box }}</h3>
-        <a href="{{ section.settings.link }}" class="btn btn-cta" title="This is a link" />{{ section.settings.linktext }}</a>
     </div>
+    {% for block in section.blocks %}
+        <div>
+            <a href="{{ block.settings.link }}" class="btn btn-cta" title="This is a link" />{{ block.settings.linktext }}</a>
+        </div>
+    {% endfor %}
 </div>
 
 {% schema %}
     {
         "name": "Call to action",
+        "max_blocks": 3,
         "settings": [
             {
                 "id": "text-box",
@@ -15,16 +20,24 @@
                 "label": "Heading",
                 "default": "Title"
             },
+        ],
+        "blocks": [
             {
-                "id": "link",
-                "type": "url",
-                "label": "Button Link"
-            },
-            {
-                "id": "linktext",
-                "type": "text",
-                "label": "Button text",
-                "default": "Click here"
+                "type" :"select",
+                "name": "select",
+                "settings": [
+                    {
+                        "id": "select",
+                        "type": "url",
+                        "label": "Button Link"
+                    },
+                    {
+                        "id": "linktext",
+                        "type": "text",
+                        "label": "Button text",
+                        "default": "Click here"
+                    }                
+                ]
             }
         ],
         "presets": [
