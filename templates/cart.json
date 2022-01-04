@@ -3,6 +3,9 @@
     "cart-items": {
       "type": "main-cart-items"
     },
+    "text-cart": {
+      "type": "text-cart"
+    },
     "cart-footer": {
       "type": "main-cart-footer",
       "blocks": {
