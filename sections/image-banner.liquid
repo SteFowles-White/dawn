@@ -4,35 +4,56 @@
   .grid-container {
     display: grid;
     grid-column-gap: 10px;
-    grid-template-columns: auto auto;
-    background-color: #2196F3;
+    grid-template-columns: 40% 60%;
     padding: 10px;
   }
 
-  .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
+    .grid-item {
+      padding: 2rem;
+      justify-self: center;
+      align-self: center;
+      font-size: 30px;
+      text-align: center;
+    }
+
+      .grid-image-container {
+        padding: 5rem 6rem 5rem 0rem;
+      }
+
 {%- endstyle -%}
 
-<div id="Banner-{{ section.id }}" class="">
+<section id="Banner-{{ section.id }}" class="">
   <div class="grid-container">
     <div class="grid-item">
+      <div>
+        <h1 class="h1">{{ block.settings.heading }}</h1>
+        <div>
+          <p>Test Text</p>
+        </div>
+        <div class="" {{ block.shopify_attributes }}>
+          {%- if block.settings.button_label_1 != blank -%}
+            <a{% if block.settings.button_link_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_1 }}"{% endif %} class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">{{ block.settings.button_label_1 | escape }}</a>
+          {%- endif -%}
+          {%- if block.settings.button_label_2 != blank -%}
+            <a{% if block.settings.button_link_2 == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link_2 }}"{% endif %} class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">{{ block.settings.button_label_2 | escape }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="grid-item grid-image-container">
       {%- if section.settings.image != blank -%}
         <img
-        srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
-              {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | img_url: '550x' }} 550w,{%- endif -%}
-              {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
-              {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
-              {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
-              {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
-              {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
-              {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
-              {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
-              {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}"
+            class="grid-item-img"
+            srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+                  {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | img_url: '550x' }} 550w,{%- endif -%}
+                  {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+                  {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+                  {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+                  {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+                  {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+                  {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}"
             src="{{ section.settings.image | img_url: '1500x' }}"
             loading="lazy"
             alt="{{ section.settings.image.alt | escape }}"
@@ -117,7 +138,7 @@
       {%- endfor -%}
     </div>
   </div> -->
-</div>
+</section>
 
 {% schema %}
 {
