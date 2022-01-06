@@ -26,7 +26,12 @@
   <div class="grid-container">
     <div class="grid-item">
       <div>
-        <h1 class="h1">{{ section.block.settings.heading | escape }}</h1>
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h1 class="h1">{{ section.block.settings.heading | escape }}</h1>
+          {%- endcase -%}
+        {%- endfor -%}
         <div>
           <p>Test Text</p>
         </div>
